@@ -1,4 +1,4 @@
-# Final Portfolio Project – Chloe A.
+# Chloe A.
 
 ## About Me
 Hi, I'm Chloe, a student developer passionate about learning how to build engaging, functional web applications. Throughout my time studying programming, I’ve been exploring the foundations of front-end development, sharpening my skills in HTML, CSS, JavaScript, and Git. I'm always looking for ways to combine creativity with code to solve real-world problems and express unique ideas.
