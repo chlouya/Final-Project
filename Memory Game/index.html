@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Memory Game | Javascript</title>
+	<title>Memory Game | JavaScript</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -12,36 +12,40 @@
 		<div class="game"></div>
 		<button class="reset" onclick="window.location.reload(true);">Reset Game</button>
 	</div>
+
 	<script>
 		const emojis = ["💌","⭐","🍓","👾","🌸","🧩","🎁","💚","💌","⭐","🍓","👾","🌸","🧩","🎁","💚"];
-		var shuf_emojis = emojis.sort(() => (Math.random() > .5) ? 2 : -1); //used to mix the emojis each round
-		for ( var i =0; i<emojis.length; i++){
+		const shuf_emojis = [...emojis].sort(() => 0.5 - Math.random());
+
+		for (let i = 0; i < shuf_emojis.length; i++) {
 			let box = document.createElement('div');
-			box.className = 'item'; 
+			box.className = 'item';
 			box.innerHTML = shuf_emojis[i];
 
-			box.onclick = function(){
+			box.onclick = function () {
+				if (this.classList.contains('boxOpen') || this.classList.contains('boxMatch')) {
+					return; // prevent clicking already open or matched boxes
+				}
+
 				this.classList.add('boxOpen');
-				setTimeout(function(){ //setTimeout executes a function once after a specified (1000) delay in milliseconds
-					if(document.querySelectorAll('.boxOpen').length > 1){
-						if(document.querySelectorAll('.boxOpen')[0].innerHTML == document.querySelectorAll('.boxOpen')[1].innerHTML){
-							document.querySelectorAll('.boxOpen')[0].classList.add('boxMatch');
-							document.querySelectorAll('.boxOpen')[1].classList.add('boxMatch'); //if the first card and the second card are the same, match them
 
-							document.querySelectorAll('.boxOpen')[1].classList.remove('boxOpen');
-							document.querySelectorAll('.boxOpen')[0].classList.remove('boxOpen'); // if the first card and the second card are NOT the same, don't match them
+				const openedBoxes = document.querySelectorAll('.boxOpen');
+				if (openedBoxes.length === 2) {
+					setTimeout(() => {
+						if (openedBoxes[0].innerHTML === openedBoxes[1].innerHTML) {
+							openedBoxes[0].classList.add('boxMatch');
+							openedBoxes[1].classList.add('boxMatch');
+						}
+						openedBoxes[0].classList.remove('boxOpen');
+						openedBoxes[1].classList.remove('boxOpen');
 
-							if(document.querySelectorAll('.boxMatch').length == emojis.length){
-								alert('win') //if all the cards have been matched, alert win
-							}
+						if (document.querySelectorAll('.boxMatch').length === emojis.length) {
+							alert('You win!');
 						}
-              else {
-							document.querySelectorAll('.boxOpen')[1].classList.remove('boxOpen');
-							document.querySelectorAll('.boxOpen')[0].classList.remove('boxOpen'); //if the cards are not matched, close the cards
-						}
-					}
-				},1000) //1000 is the milliseconds setTimeout delays
-			}
+					}, 1000);
+				}
+			};
+
 			document.querySelector('.game').appendChild(box);
 		}
 	</script>
