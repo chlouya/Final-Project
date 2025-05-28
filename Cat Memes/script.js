@@ -57,8 +57,3 @@ happyCatBtn.addEventListener('click', () => getRandomMemeFromCategory(happyCatMe
 madCatBtn.addEventListener('click', () => getRandomMemeFromCategory(madCatMemes));
 surprisedCatBtn.addEventListener('click', () => getRandomMemeFromCategory(surprisedCatMemes));
 sadCatBtn.addEventListener('click', () => getRandomMemeFromCategory(sadCatMemes));
-// function to get a random meme from a given category
-function getRandomMemeFromCategory(category) {
-    const randomIndex = Math.floor(Math.random() * category.length);
-    memeImage.src = category[randomIndex];
-}
