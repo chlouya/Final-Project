@@ -1,20 +1,19 @@
-*
-{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: monospace;
 }
-body 
-{
+
+body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
 	background: #F2BAC9;
 }
-.container 
-{
+
+.container {
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -24,15 +23,15 @@ body
 	background: #FFFFFF;
 	padding: 40px 60px;
 }
-h2 
-{
+
+h2 {
 	font-size: 3em;
 	color: #F8C0C8;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 }
-.reset 
-{
+
+.reset {
 	padding: 15px 20px;
 	color: #FFFFFF;
 	background: #F9B9F2;
@@ -43,13 +42,13 @@ h2
 	cursor: pointer;
 	font-weight: 600;
 }
-.reset:focus 
-{
+
+.reset:focus {
 	color: #fff;
 	background: #F2BAC9;
 }
-.game 
-{
+
+.game {
 	width: 430px;
 	height: 430px;
 	display: flex;
@@ -58,8 +57,8 @@ h2
 	transform-style: preserve-3d;
 	perspective: 500px;
 }
-.item 
-{
+
+.item {
 	position: relative;
 	width: 100px;
 	height: 100px;
@@ -71,12 +70,12 @@ h2
 	transform: rotateY(180deg);
 	transition: 0.25s;
 }
-.item.boxOpen 
-{
+
+.item.boxOpen {
 	transform: rotateY(0deg);
 }
-.item::after 
-{
+
+.item::after {
 	content: '';
 	position: absolute;
 	inset: 0;
@@ -85,8 +84,8 @@ h2
 	transform: rotateY(0deg);
 	backface-visibility: hidden;
 }
-.boxOpen:after ,
-.boxMatch:after
-{
+
+.boxOpen::after,
+.boxMatch::after {
 	transform: rotateY(180deg);
 }
